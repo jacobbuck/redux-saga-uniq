@@ -1,7 +1,7 @@
 {
   "name": "redux-saga-uniq",
   "version": "0.0.1",
-  "description": "Saga Helpers",
+  "description": "Saga helpers for taking each first unique action.",
   "main": "index.js",
   "scripts": {
     "build": "babel --out-dir lib src",
