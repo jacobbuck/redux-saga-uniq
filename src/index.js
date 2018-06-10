@@ -1,4 +1,5 @@
 import { apply, fork, take } from 'redux-saga/effects';
+import regeneratorRuntime from 'regenerator-runtime';
 
 const takeUniqBy = (iteratee, patternOrChannel, saga, ...args) =>
   fork(function*() {
