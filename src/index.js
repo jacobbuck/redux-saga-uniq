@@ -3,14 +3,14 @@ import regeneratorRuntime from 'regenerator-runtime';
 
 const takeUniqBy = (iteratee, patternOrChannel, saga, ...args) =>
   fork(function*() {
-    let actions = [];
+    const actions = [];
     while (true) {
       const action = yield take(patternOrChannel);
       if (!actions.some(a => iteratee(a) === iteratee(action))) {
         yield fork(function*() {
-          actions = [...actions, action];
+          actions.push(action);
           yield call(saga, ...args.concat(action));
-          actions = actions.filter(a => a !== action);
+          actions.splice(actions.indexOf(action), 1);
         });
       }
     }
@@ -18,14 +18,14 @@ const takeUniqBy = (iteratee, patternOrChannel, saga, ...args) =>
 
 const takeUniqWith = (predicate, patternOrChannel, saga, ...args) =>
   fork(function*() {
-    let actions = [];
+    const actions = [];
     while (true) {
       const action = yield take(patternOrChannel);
       if (!actions.some(a => predicate(a, action))) {
         yield fork(function*() {
-          actions = [...actions, action];
+          actions.push(action);
           yield call(saga, ...args.concat(action));
-          actions = actions.filter(a => a !== action);
+          actions.splice(actions.indexOf(action), 1);
         });
       }
     }
