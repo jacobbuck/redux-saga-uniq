@@ -1,4 +1,4 @@
-import { apply, fork, take } from 'redux-saga/effects';
+import { call, fork, take } from 'redux-saga/effects';
 import regeneratorRuntime from 'regenerator-runtime';
 
 const takeUniqBy = (iteratee, patternOrChannel, saga, ...args) =>
@@ -9,7 +9,7 @@ const takeUniqBy = (iteratee, patternOrChannel, saga, ...args) =>
       if (!actions.some(a => iteratee(a) === iteratee(action))) {
         yield fork(function*() {
           actions = [...actions, action];
-          yield apply(saga, [...args, action]);
+          yield call(saga, [...args, action]);
           actions = actions.filter(a => a !== action);
         });
       }
@@ -24,7 +24,7 @@ const takeUniqWith = (predicate, patternOrChannel, saga, ...args) =>
       if (!actions.some(a => predicate(a, action))) {
         yield fork(function*() {
           actions = [...actions, action];
-          yield apply(saga, [...args, action]);
+          yield call(saga, [...args, action]);
           actions = actions.filter(a => a !== action);
         });
       }
