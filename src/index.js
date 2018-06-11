@@ -9,7 +9,7 @@ const takeUniqBy = (iteratee, patternOrChannel, saga, ...args) =>
       if (!actions.some(a => iteratee(a) === iteratee(action))) {
         yield fork(function*() {
           actions = [...actions, action];
-          yield call(saga, [...args, action]);
+          yield call(saga, ...args.concat(action));
           actions = actions.filter(a => a !== action);
         });
       }
@@ -24,7 +24,7 @@ const takeUniqWith = (predicate, patternOrChannel, saga, ...args) =>
       if (!actions.some(a => predicate(a, action))) {
         yield fork(function*() {
           actions = [...actions, action];
-          yield call(saga, [...args, action]);
+          yield call(saga, ...args.concat(action));
           actions = actions.filter(a => a !== action);
         });
       }
