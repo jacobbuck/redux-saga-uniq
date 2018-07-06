@@ -11,7 +11,7 @@ describe('takeUniqBy', () => {
 
   sagaMiddleware.run(function*() {
     yield takeUniqBy(a => Math.floor(a.payload), 'FOO', function*(action) {
-      yield call(delay, 200);
+      yield call(delay, 5);
       yield put({ type: 'BAR', payload: action.payload });
     });
   });
@@ -22,7 +22,7 @@ describe('takeUniqBy', () => {
     mockStore.dispatch({ type: 'FOO', payload: 2.5 });
     mockStore.dispatch({ type: 'FOO', payload: 2 });
 
-    await timeout(200);
+    await timeout(5);
 
     expect(mockStore.getActions()).toEqual([
       { type: 'FOO', payload: 1 },
@@ -44,7 +44,7 @@ describe('takeUniqWith', () => {
       (a1, a2) => Math.floor(a1.payload) === Math.floor(a2.payload),
       'FOO',
       function*(action) {
-        yield call(delay, 200);
+        yield call(delay, 5);
         yield put({ type: 'BAR', payload: action.payload });
       }
     );
@@ -56,7 +56,7 @@ describe('takeUniqWith', () => {
     mockStore.dispatch({ type: 'FOO', payload: 2.5 });
     mockStore.dispatch({ type: 'FOO', payload: 2 });
 
-    await timeout(200);
+    await timeout(5);
 
     expect(mockStore.getActions()).toEqual([
       { type: 'FOO', payload: 1 },
