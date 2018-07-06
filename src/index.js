@@ -18,7 +18,7 @@ const takeUniqBy = (iteratee, patternOrChannel, saga, ...args) =>
 
 const takeUniqWith = (predicate, patternOrChannel, saga, ...args) =>
   fork(function*() {
-    const actions = [];
+    let actions = [];
     while (true) {
       const action = yield take(patternOrChannel);
       if (!actions.some(a => predicate(a, action))) {
