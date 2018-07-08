@@ -4,6 +4,10 @@ Saga helpers which spawns duplicate-free sagas.
 
 ## Usage
 
+```js
+import { takeUniqBy, takeUniqWith } from 'redux-saga-uniq';
+```
+
 ### `takeUniqBy(iteratee, pattern, saga, ...args)`
 
 - `iteratee: Function` - invoked for each action to generate the criterion by which uniqueness is computed.
