@@ -1,6 +1,6 @@
 {
   "name": "redux-saga-uniq",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Saga helpers for taking each first unique action.",
   "main": "lib/index.js",
   "files": [
