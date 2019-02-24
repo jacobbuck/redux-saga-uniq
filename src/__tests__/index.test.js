@@ -1,7 +1,7 @@
-const { default: configureStore } = require('redux-mock-store');
-const { default: createSagaMiddleware, delay } = require('redux-saga');
-const { call, put } = require('redux-saga/effects');
-const { takeUniqBy, takeUniqWith } = require('../');
+import configureStore from 'redux-mock-store';
+import createSagaMiddleware from 'redux-saga';
+import { call, delay, put } from 'redux-saga/effects';
+import { takeUniqBy, takeUniqWith } from '..';
 
 const timeout = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -11,7 +11,7 @@ describe('takeUniqBy', () => {
 
   sagaMiddleware.run(function*() {
     yield takeUniqBy(a => Math.floor(a.payload), 'FOO', function*(action) {
-      yield call(delay, 5);
+      yield delay(5);
       yield put({ type: 'BAR', payload: action.payload });
     });
   });
@@ -44,7 +44,7 @@ describe('takeUniqWith', () => {
       (a1, a2) => Math.floor(a1.payload) === Math.floor(a2.payload),
       'FOO',
       function*(action) {
-        yield call(delay, 5);
+        yield delay(5);
         yield put({ type: 'BAR', payload: action.payload });
       }
     );
