@@ -1,4 +1,3 @@
-import 'regenerator-runtime/runtime';
 import { call, fork, take } from 'redux-saga/effects';
 
 const takeUniqBy = (iteratee, ...rest) =>
