@@ -1,9 +1,9 @@
 import { call, fork, take } from 'redux-saga/effects';
 
-const takeUniqBy = (iteratee, ...rest) =>
-  takeUniqWith((a, b) => iteratee(a) === iteratee(b), ...rest);
+export const takeUniqBy = (iteratee, ...rest) =>
+  takeUniqWith((a, b) => Object.is(iteratee(a), iteratee(b)), ...rest);
 
-const takeUniqWith = (comparator, patternOrChannel, saga, ...args) =>
+export const takeUniqWith = (comparator, patternOrChannel, saga, ...args) =>
   fork(function* () {
     let actions = [];
     while (true) {
@@ -17,5 +17,3 @@ const takeUniqWith = (comparator, patternOrChannel, saga, ...args) =>
       }
     }
   });
-
-export { takeUniqBy, takeUniqWith };
