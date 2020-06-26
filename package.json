@@ -2,12 +2,18 @@
   "name": "redux-saga-uniq",
   "version": "1.2.0",
   "description": "Saga helpers for taking each first unique action.",
-  "browser": "lib/browser.js",
-  "main": "lib/module.js",
-  "module": "lib/module.js",
+  "main": "lib/module.cjs.js",
+  "module": "lib/module.esm.js",
+  "browser": {
+    "./lib/server.cjs.js": "./lib/browser.cjs.js",
+    "./lib/server.esm.js": "./lib/browser.esm.js"
+  },
   "files": [
     "lib"
   ],
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
     "build": "rollup -c",
     "precommit": "lint-staged",
@@ -34,6 +40,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
+    "@rollup/plugin-babel": "^5.0.4",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
     "lint-staged": "^10.2.11",
@@ -41,8 +48,7 @@
     "redux": "^4.0.5",
     "redux-mock-store": "^1.5.4",
     "redux-saga": "^1.1.3",
-    "rollup": "^2.18.0",
-    "rollup-plugin-babel": "^4.4.0"
+    "rollup": "^2.18.0"
   },
   "peerDependencies": {
     "redux-saga": ">=0.16.0"
