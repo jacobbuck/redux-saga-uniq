@@ -3,17 +3,21 @@ import createSagaMiddleware from 'redux-saga';
 import { call, delay, put } from 'redux-saga/effects';
 import { takeUniqBy, takeUniqWith } from '..';
 
-const timeout = ms => new Promise(resolve => setTimeout(resolve, ms));
+const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 describe('takeUniqBy', () => {
   const sagaMiddleware = createSagaMiddleware();
   const mockStore = configureStore([sagaMiddleware])();
 
-  sagaMiddleware.run(function*() {
-    yield takeUniqBy(a => Math.floor(a.payload), 'FOO', function*(action) {
-      yield delay(5);
-      yield put({ type: 'BAR', payload: action.payload });
-    });
+  sagaMiddleware.run(function* () {
+    yield takeUniqBy(
+      (a) => Math.floor(a.payload),
+      'FOO',
+      function* (action) {
+        yield delay(5);
+        yield put({ type: 'BAR', payload: action.payload });
+      }
+    );
   });
 
   test('takes the first unique action by iteratee', async () => {
@@ -39,11 +43,11 @@ describe('takeUniqWith', () => {
   const sagaMiddleware = createSagaMiddleware();
   const mockStore = configureStore([sagaMiddleware])();
 
-  sagaMiddleware.run(function*() {
+  sagaMiddleware.run(function* () {
     yield takeUniqWith(
       (a1, a2) => Math.floor(a1.payload) === Math.floor(a2.payload),
       'FOO',
-      function*(action) {
+      function* (action) {
         yield delay(5);
         yield put({ type: 'BAR', payload: action.payload });
       }
