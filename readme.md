@@ -27,7 +27,3 @@ import { takeUniqBy, takeUniqWith } from 'redux-saga-uniq';
 - `saga: Function` - a Generator function
 
 - `args: Array<any>` - arguments to be passed to the started task. `takeUniqWith` will add the incoming action to the argument list (i.e. the action will be the last argument provided to `saga`)
-
-## Browser Support
-
-[regenerator-runtime](https://www.npmjs.com/package/regenerator-runtime) (or [@babel/polyfill](https://www.npmjs.com/package/@babel/polyfill)) is required for running in browser. Please make sure it's imported before redux-saga-uniq.
