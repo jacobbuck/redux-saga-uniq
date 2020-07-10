@@ -7,10 +7,12 @@ export default [
       { file: 'lib/browser.cjs.js', format: 'cjs' },
       { file: 'lib/browser.esm.js', format: 'esm' },
     ],
-    external: ['redux-saga/effects'],
+    external: [/@babel\/runtime/, 'redux-saga/effects'],
     plugins: [
       babel({
+        babelHelpers: 'runtime',
         presets: [['@babel/preset-env', { loose: true }]],
+        plugins: ['@babel/plugin-transform-runtime'],
       }),
     ],
   },
@@ -23,6 +25,7 @@ export default [
     external: ['redux-saga/effects'],
     plugins: [
       babel({
+        babelHelpers: 'bundled',
         presets: [['@babel/preset-env', { targets: { node: '10' } }]],
       }),
     ],
