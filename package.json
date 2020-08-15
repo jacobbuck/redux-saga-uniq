@@ -1,6 +1,6 @@
 {
   "name": "redux-saga-uniq",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Saga helpers for taking each first unique action.",
   "main": "lib/module.cjs.js",
   "module": "lib/module.esm.js",
