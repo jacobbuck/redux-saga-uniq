@@ -15,6 +15,7 @@
   "engines": {
     "node": ">=10"
   },
+  "sideEffects": false,
   "scripts": {
     "build": "rollup -c",
     "format": "prettier --write .",
