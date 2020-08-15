@@ -5,14 +5,14 @@ export const takeUniqBy = (iteratee, ...rest) =>
 
 export const takeUniqWith = (comparator, patternOrChannel, saga, ...args) =>
   fork(function* () {
-    let actions = [];
+    const actions = new Set();
     while (true) {
       const action = yield take(patternOrChannel);
-      if (!actions.some((a) => comparator(a, action))) {
+      if (![...actions].some((a) => comparator(a, action))) {
         yield fork(function* () {
-          actions = actions.concat([action]);
-          yield call(saga, ...args.concat(action));
-          actions = actions.filter((a) => a !== action);
+          actions.add(action);
+          yield call(saga, ...args, action);
+          actions.delete(action);
         });
       }
     }

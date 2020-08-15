@@ -11,7 +11,7 @@ export default [
     plugins: [
       babel({
         babelHelpers: 'runtime',
-        presets: [['@babel/preset-env', { loose: true }]],
+        presets: ['@babel/preset-env'],
         plugins: ['@babel/plugin-transform-runtime'],
       }),
     ],
