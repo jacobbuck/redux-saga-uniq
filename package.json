@@ -17,6 +17,7 @@
   },
   "scripts": {
     "build": "rollup -c",
+    "format": "prettier --write .",
     "prepare": "npm run build",
     "prepublishOnly": "npm run test",
     "test": "jest",
