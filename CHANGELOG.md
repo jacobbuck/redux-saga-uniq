@@ -93,6 +93,4 @@
 
 ## v1.0.0 - 2018-07-07
 
-### Added
-
-- Initial public version!
+Initial public version! :tada:
