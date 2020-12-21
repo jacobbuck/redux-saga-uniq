@@ -4,8 +4,8 @@ export default [
   {
     input: 'src/index.js',
     output: [
-      { file: 'lib/browser.cjs.js', format: 'cjs' },
-      { file: 'lib/browser.esm.js', format: 'esm' },
+      { file: 'lib/browser.cjs.js', format: 'cjs', sourcemap: true },
+      { file: 'lib/browser.esm.js', format: 'esm', sourcemap: true },
     ],
     external: [/@babel\/runtime/, 'redux-saga/effects'],
     plugins: [
@@ -19,9 +19,9 @@ export default [
   {
     input: 'src/index.js',
     output: [
-      { file: 'lib/esnext.js', format: 'esm' },
-      { file: 'lib/module.cjs.js', format: 'cjs' },
-      { file: 'lib/module.esm.js', format: 'esm' },
+      { file: 'lib/esnext.js', format: 'esm', sourcemap: true },
+      { file: 'lib/module.cjs.js', format: 'cjs', sourcemap: true },
+      { file: 'lib/module.esm.js', format: 'esm', sourcemap: true },
     ],
     external: ['redux-saga/effects'],
     plugins: [
