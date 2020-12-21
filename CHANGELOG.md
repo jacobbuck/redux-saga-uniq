@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Added source maps to build output.
+
+### Changed
+
+- Bumped up version of [@babel/runtime](https://www.npmjs.com/package/@babel/runtime) to v7.12.5.
+- Updated devDependencies.
+
 ## v1.5.2 - 2020-08-15
 
 ### Added
@@ -88,7 +99,7 @@
 
 ### Changed
 
-- Changed [regenerator-runtime](https://www.npmjs.com/package/regenerator-runtime) import to global definition. 
+- Changed [regenerator-runtime](https://www.npmjs.com/package/regenerator-runtime) import to global definition.
 - Updated devDependencies.
 
 ## v1.0.0 - 2018-07-07
