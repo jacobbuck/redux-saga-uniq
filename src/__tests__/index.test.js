@@ -3,11 +3,12 @@ import createSagaMiddleware from 'redux-saga';
 import { call, delay, put } from 'redux-saga/effects';
 import { takeUniqBy, takeUniqWith } from '..';
 
+const createMockStore = (...middleware) => configureStore(middleware)();
 const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-describe('takeUniqBy', () => {
+test('takeUniqBy takes the first unique action by iteratee', async () => {
   const sagaMiddleware = createSagaMiddleware();
-  const mockStore = configureStore([sagaMiddleware])();
+  const mockStore = createMockStore(sagaMiddleware);
 
   sagaMiddleware.run(function* () {
     yield takeUniqBy(
@@ -20,28 +21,26 @@ describe('takeUniqBy', () => {
     );
   });
 
-  test('takes the first unique action by iteratee', async () => {
-    mockStore.dispatch({ type: 'FOO', payload: 1 });
-    mockStore.dispatch({ type: 'FOO', payload: 1.5 });
-    mockStore.dispatch({ type: 'FOO', payload: 2.5 });
-    mockStore.dispatch({ type: 'FOO', payload: 2 });
+  mockStore.dispatch({ type: 'FOO', payload: 1 });
+  mockStore.dispatch({ type: 'FOO', payload: 1.5 });
+  mockStore.dispatch({ type: 'FOO', payload: 2.5 });
+  mockStore.dispatch({ type: 'FOO', payload: 2 });
 
-    await timeout(5);
+  await timeout(5);
 
-    expect(mockStore.getActions()).toEqual([
-      { type: 'FOO', payload: 1 },
-      { type: 'FOO', payload: 1.5 },
-      { type: 'FOO', payload: 2.5 },
-      { type: 'FOO', payload: 2 },
-      { type: 'BAR', payload: 1 },
-      { type: 'BAR', payload: 2.5 },
-    ]);
-  });
+  expect(mockStore.getActions()).toEqual([
+    { type: 'FOO', payload: 1 },
+    { type: 'FOO', payload: 1.5 },
+    { type: 'FOO', payload: 2.5 },
+    { type: 'FOO', payload: 2 },
+    { type: 'BAR', payload: 1 },
+    { type: 'BAR', payload: 2.5 },
+  ]);
 });
 
-describe('takeUniqWith', () => {
+test('takeUniqWith takes the first unique action by iteratee', async () => {
   const sagaMiddleware = createSagaMiddleware();
-  const mockStore = configureStore([sagaMiddleware])();
+  const mockStore = createMockStore(sagaMiddleware);
 
   sagaMiddleware.run(function* () {
     yield takeUniqWith(
@@ -54,21 +53,19 @@ describe('takeUniqWith', () => {
     );
   });
 
-  test('takes the first unique action by iteratee', async () => {
-    mockStore.dispatch({ type: 'FOO', payload: 1 });
-    mockStore.dispatch({ type: 'FOO', payload: 1.5 });
-    mockStore.dispatch({ type: 'FOO', payload: 2.5 });
-    mockStore.dispatch({ type: 'FOO', payload: 2 });
+  mockStore.dispatch({ type: 'FOO', payload: 1 });
+  mockStore.dispatch({ type: 'FOO', payload: 1.5 });
+  mockStore.dispatch({ type: 'FOO', payload: 2.5 });
+  mockStore.dispatch({ type: 'FOO', payload: 2 });
 
-    await timeout(5);
+  await timeout(5);
 
-    expect(mockStore.getActions()).toEqual([
-      { type: 'FOO', payload: 1 },
-      { type: 'FOO', payload: 1.5 },
-      { type: 'FOO', payload: 2.5 },
-      { type: 'FOO', payload: 2 },
-      { type: 'BAR', payload: 1 },
-      { type: 'BAR', payload: 2.5 },
-    ]);
-  });
+  expect(mockStore.getActions()).toEqual([
+    { type: 'FOO', payload: 1 },
+    { type: 'FOO', payload: 1.5 },
+    { type: 'FOO', payload: 2.5 },
+    { type: 'FOO', payload: 2 },
+    { type: 'BAR', payload: 1 },
+    { type: 'BAR', payload: 2.5 },
+  ]);
 });
