@@ -9,9 +9,6 @@
     "./lib/module.esm.js": "./lib/browser.esm.js"
   },
   "esnext": "lib/esnext.js",
-  "files": [
-    "lib"
-  ],
   "engines": {
     "node": ">=10"
   },
