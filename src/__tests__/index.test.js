@@ -38,7 +38,7 @@ test('takeUniqBy takes the first unique action by iteratee', async () => {
   ]);
 });
 
-test('takeUniqWith takes the first unique action by iteratee', async () => {
+test('takeUniqWith takes the first unique action by comparator', async () => {
   const sagaMiddleware = createSagaMiddleware();
   const mockStore = createMockStore(sagaMiddleware);
 
