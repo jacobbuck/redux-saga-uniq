@@ -19,7 +19,6 @@ export default [
   {
     input: 'src/index.js',
     output: [
-      { file: 'lib/esnext.js', format: 'esm', sourcemap: true },
       { file: 'lib/module.cjs.js', format: 'cjs', sourcemap: true },
       { file: 'lib/module.esm.js', format: 'esm', sourcemap: true },
     ],

@@ -8,7 +8,7 @@
     "./lib/module.cjs.js": "./lib/browser.cjs.js",
     "./lib/module.esm.js": "./lib/browser.esm.js"
   },
-  "esnext": "lib/esnext.js",
+  "esnext": "src/index.js",
   "engines": {
     "node": ">=10"
   },
