@@ -8,7 +8,8 @@
 
 ### Changed
 
-- Bumped up version of [@babel/runtime](https://www.npmjs.com/package/@babel/runtime) to v7.12.5.
+- Bumped up version of [@babel/runtime](https://www.npmjs.com/package/@babel/runtime) to v7.14.0.
+- Replaced esnext build with source.
 
 ## v1.5.2 - 2020-08-15
 
