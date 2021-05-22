@@ -8,7 +8,7 @@ const takeUniqWith = (comparator, patternOrChannel, saga, ...args) =>
     const actions = new Set();
     while (true) {
       const action = yield take(patternOrChannel);
-      if (![...actions].some((a) => comparator(a, action))) {
+      if (!Array.from(actions).some((a) => comparator(a, action))) {
         yield fork(function* () {
           actions.add(action);
           yield call(saga, ...args, action);
