@@ -9,7 +9,7 @@
 ### Changed
 
 - Bumped up version of [@babel/runtime](https://www.npmjs.com/package/@babel/runtime) to v7.14.0.
-- Replaced esnext build with source.
+- Replaced esnext build with node ES Module build.
 
 ## v1.5.2 - 2020-08-15
 
@@ -48,7 +48,7 @@
 ### Added
 
 - Added `engines` property in [package.json](./package.json).
-- Added ES Module builds for both Node.js and browsers.
+- Added ES Module builds for both node and browsers.
 
 ### Changed
 
