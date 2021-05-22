@@ -9,6 +9,7 @@
 ### Changed
 
 - Bumped up version of [@babel/runtime](https://www.npmjs.com/package/@babel/runtime) to v7.14.0.
+- Reduced browser bundle size by using [`Array.from`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) instead of Babel helper for array spread operator internally.
 - Replaced esnext build with node ES Module build.
 
 ## v1.5.2 - 2020-08-15
